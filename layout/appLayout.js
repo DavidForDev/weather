@@ -9,10 +9,10 @@ const AppLayout = ({ children, header }) => {
     <>
       {header && (
         <ModalLayout
+          className="w-1/4 clg:w-0 h-full overflow-hidden duration-700"
           modalName="navModal"
           opener="navOpener"
           body="main"
-          style="lg:w-0 w-1/4 overflow-hidden duration-700"
         >
           <Navigation />
         </ModalLayout>

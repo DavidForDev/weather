@@ -44,9 +44,9 @@ const weatherHome = ({ datastate }) => {
   return (
     <>
       <HeadLayout title="Weather" />
-      <div className="lg:p-3 home p-10 flex flex-col gap-7 overflow-auto  h-full">
+      <div className="clg:p-3 home p-10 flex flex-col gap-7 overflow-auto  h-full">
         <div className="flex gap-5 items-center">
-          <div className="lg:block w-8 hidden navOpener cursor-pointer">
+          <div className="clg:block w-8 hidden navOpener cursor-pointer">
             <div className="w-full h-0.5 bg-black m-2"></div>
             <div className="w-full h-0.5 bg-black m-2"></div>
             <div className="w-full h-0.5 bg-black m-2"></div>
@@ -54,7 +54,7 @@ const weatherHome = ({ datastate }) => {
           <Search />
         </div>
         <MainDetail data={state} />
-        <div className="sm:grid-cols-1 grid grid-cols-2 gap-8 w-full">
+        <div className="csm:grid-cols-1 grid grid-cols-2 gap-8 w-full">
           <AdditionDetail
             name="wind"
             description="today wind speed"

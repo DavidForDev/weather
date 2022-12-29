@@ -1,13 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./pages/**/*.js", "./components/**/*.js"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     screens: {
-      sm: { max: "640px" },
-      md: { max: "768px" },
-      lg: { max: "1024px" },
-      xl: { max: "1280px" },
-      "2xl": { max: "1536px" },
+      csm: { max: "640px" },
+
+      cmd: { max: "768px" },
+
+      clg: { max: "1024px" },
+
+      cxl: { max: "1280px" },
+
+      c2xl: { max: "1536px" },
+    },
+    minWidth: {
+      "1/4": "25%",
     },
   },
   plugins: [],

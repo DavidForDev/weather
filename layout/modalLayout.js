@@ -4,7 +4,7 @@ import ModalFun from "../util/modalEngine";
 const ModalLayout = ({
   children,
   modalName,
-  style,
+  className,
   opener,
   rightSide,
   body,
@@ -15,7 +15,7 @@ const ModalLayout = ({
   });
 
   return (
-    <div ref={modalRef} className={`${modalName} ${style} h-full `}>
+    <div ref={modalRef} className={`${modalName} ${className}`}>
       {children}
     </div>
   );

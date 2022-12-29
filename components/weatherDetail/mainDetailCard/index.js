@@ -60,10 +60,10 @@ const MainDetail = ({ data }) => {
 
   return (
     <div
-      className="sm:flex-col-reverse flex gap-3 w-full p-6 rounded-xl bg-sky-100"
+      className="csm:flex-col-reverse flex gap-3 w-full p-6 rounded-xl bg-sky-100"
       style={gradientByWeather}
     >
-      <div className="flex flex-col justify-between p-2 gap-9 w-1/2 sm:w-full h-full box-border">
+      <div className="flex flex-col justify-between p-2 gap-9 w-1/2 csm:w-full h-full box-border">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Image
@@ -113,7 +113,7 @@ const MainDetail = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 sm:w-full h-full">
+      <div className="w-1/2 csm:w-full h-full">
         <div className="w-full relative rounded-xl h-full backdrop-blur-1xl p-2 bg-white/50 flex justify-center items-center">
           <Image
             src={`/images/weather/${data.icon}.png`}
