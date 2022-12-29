@@ -1,5 +1,24 @@
-import '../styles/globals.css'
+import "../public/styles/global.css";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+// ========= Layout ========== \\
+import AppLayout from "../layout/appLayout";
+
+// ========= Context ========== \\
+import { WeatherContextWrapper } from "../context/weather.context";
+import { FavoriteProvider } from "../context/addtoFavorite.context";
+
+const App = ({ Component, pageProps }) => {
+  if (Component.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />);
+  }
+
+  return (
+    <AppLayout header={true}>
+      <FavoriteProvider>
+        <Component {...pageProps} />
+      </FavoriteProvider>
+    </AppLayout>
+  );
+};
+
+export default App;
