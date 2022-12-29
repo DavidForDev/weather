@@ -5,6 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: ["w-1/4", "clg:w-0", "overflow-hidden", "duration-700"],
   theme: {
     screens: {
       csm: { max: "640px" },

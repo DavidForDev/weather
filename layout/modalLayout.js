@@ -15,7 +15,7 @@ const ModalLayout = ({
   });
 
   return (
-    <div ref={modalRef} className={`${modalName} ${className}`}>
+    <div className={`${modalName} ${className} h-full`} ref={modalRef}>
       {children}
     </div>
   );
