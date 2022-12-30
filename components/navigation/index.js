@@ -1,10 +1,6 @@
 // ========== Nav Li ========== \\
 import NavLi from "./navLi";
 
-// ========== Icons ========== \\
-import DashboarddSvg from "../../public/icons/dashboardd";
-import FavoriteSvg from "../../public/icons/favorite";
-
 const Navigation = () => {
   const navList = [
     { name: "Dashboard", image: "dashboard.png", href: "/" },
