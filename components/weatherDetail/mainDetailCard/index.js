@@ -60,7 +60,7 @@ const MainDetail = ({ data }) => {
 
   return (
     <div
-      className="csm:flex-col-reverse flex gap-3 w-full p-6 rounded-xl bg-sky-100"
+      className="csm:flex-col-reverse csm:p-2 flex gap-3 w-full p-6 rounded-xl bg-sky-100"
       style={gradientByWeather}
     >
       <div className="flex flex-col justify-between p-2 gap-9 w-1/2 csm:w-full h-full box-border">

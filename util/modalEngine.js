@@ -47,10 +47,9 @@ const ModalFun = (
   if (openerElement) {
     openerElement.addEventListener("click", () => {
       openerClicked = 1;
-      containerElement.style.width = "100%";
-      bodyElement.style.transform = `translateX(${
-        rightSide ? "-33.333333%" : "33.333333%"
-      } )`;
+      containerElement.style.width = "225px";
+      bodyElement.style.transform = `translateX(225px)`;
+      bodyElement.style.opacity = "0.3";
       if (blackModeElement) {
         blackModeElement.style.display = "flex";
       }
@@ -63,6 +62,7 @@ const ModalFun = (
       containerElement.style.width = "0%";
       if (bodyElement) {
         bodyElement.style.transform = "translateX(0%)";
+        bodyElement.style.opacity = "1";
       }
       if (blackModeElement) {
         blackModeElement.style.display = "none";

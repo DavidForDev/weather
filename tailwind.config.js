@@ -18,9 +18,6 @@ module.exports = {
 
       c2xl: { max: "1536px" },
     },
-    minWidth: {
-      "1/4": "25%",
-    },
   },
   plugins: [],
 };

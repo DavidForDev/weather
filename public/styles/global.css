@@ -4,8 +4,8 @@
 
 @import "./reset.css";
 
-html {
-  overflow-x: hidden;
+html, body {
+  overflow: hidden;
 }
 
 html,
