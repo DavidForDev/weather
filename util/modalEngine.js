@@ -50,6 +50,7 @@ const ModalFun = (
       containerElement.style.width = "225px";
       bodyElement.style.transform = `translateX(225px)`;
       bodyElement.style.opacity = "0.3";
+      bodyElement.style.pointerEvents = "none";
       if (blackModeElement) {
         blackModeElement.style.display = "flex";
       }
@@ -63,6 +64,7 @@ const ModalFun = (
       if (bodyElement) {
         bodyElement.style.transform = "translateX(0%)";
         bodyElement.style.opacity = "1";
+        bodyElement.style.pointerEvents = "auto";
       }
       if (blackModeElement) {
         blackModeElement.style.display = "none";
