@@ -19,7 +19,7 @@ const Saved = () => {
           <div className="w-full h-0.5 bg-black m-2"></div>
           <div className="w-full h-0.5 bg-black m-2"></div>
         </div>
-        <div className="overflow-auto gap-9 flex flex-wrap justify-center w-full">
+        <div className="overflow-auto gap-9 flex flex-wrap csm:justify-center w-full">
           {favorites.length === 0 ? (
             <h3 className="text-gray-400 text-xl">You have no favorite</h3>
           ) : (

@@ -1,11 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import gsap from "gsap";
 
 // ========== Context ========== \\
 import FavoriteContext from "../../../context/addtoFavorite.context";
 
 const MainDetail = ({ data }) => {
-  const { addFavorite } = useContext(FavoriteContext);
+  const { addFavorite, favorites } = useContext(FavoriteContext);
+  const container = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(container.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+
+    return () => tl.kill();
+  }, []);
+
+  // ========== remove star icon if this weather we have in favorite =========== \\
+  const isFavorite = favorites.some(
+    (x) => x.cityName === data.name && x.countryCode === data.countryCode
+  );
 
   // ========== Gradients according to weather =========== \\
   const weatherGradient = [
@@ -58,25 +72,57 @@ const MainDetail = ({ data }) => {
     return el.main.toLowerCase() === data.main?.toLowerCase();
   });
 
+  // ========== Timer with AM PM ========== \\
+  const timeform = () => {
+    var CurrentTime = new Date();
+    var hour = CurrentTime.getHours() - 12;
+    var minute = CurrentTime.getMinutes();
+
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
+
+    var GetCurrentTime = hour + ":" + minute;
+
+    if (hour > 11) {
+      GetCurrentTime += "PM";
+    } else {
+      GetCurrentTime += "AM";
+    }
+
+    return GetCurrentTime;
+  };
+
+  const [time, setTime] = useState(timeform());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(timeform), 60000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div
-      className="csm:flex-col-reverse csm:p-2 flex gap-3 w-full p-6 rounded-xl bg-sky-100"
+      className="csm:flex-col-reverse csm:p-2 flex gap-3 w-full p-6 rounded-xl bg-sky-100 shadow-lg "
       style={gradientByWeather}
+      ref={container}
     >
       <div className="flex flex-col justify-between p-2 gap-9 w-1/2 csm:w-full h-full box-border">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Image
               src="/images/weatherDetail/location.png"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               alt="location"
             />
             <h4>{data.name}</h4>
           </div>
           <div className="flex gap-1">
             <p>Today</p>
-            {data.time}
+            {time}
           </div>
         </div>
         <div className="flex flex-col gap-5 text-center">
@@ -87,8 +133,8 @@ const MainDetail = ({ data }) => {
           <div className="flex items-center gap-1">
             <Image
               src="/images/weatherDetail/pressure.png"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               alt="location"
             />
             <h4>{data.pressure} hpa</h4>
@@ -96,8 +142,8 @@ const MainDetail = ({ data }) => {
           <div className="flex items-center gap-1">
             <Image
               src="/images/weatherDetail/humidity.png"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               alt="location"
             />
             <h4>{data.humidity} %</h4>
@@ -105,8 +151,8 @@ const MainDetail = ({ data }) => {
           <div className="flex items-center gap-1">
             <Image
               src="/images/weatherDetail/wind.png"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               alt="location"
             />
             <h4>{data.windSpeed} km/h</h4>
@@ -121,14 +167,18 @@ const MainDetail = ({ data }) => {
             height={150}
             alt={data.icon}
           />
-          <Image
-            src={`/images/favorite.png`}
-            width={30}
-            height={30}
-            className="absolute top-3 right-3 cursor-pointer"
-            alt="weatherIcons"
-            onClick={() => addFavorite(data.name, data.countryCode)}
-          />
+          {!isFavorite ? (
+            <Image
+              src={`/images/favorite.png`}
+              width={30}
+              height={30}
+              className="absolute top-3 right-3 cursor-pointer"
+              alt="weatherIcons"
+              onClick={() => addFavorite(data.name, data.countryCode)}
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

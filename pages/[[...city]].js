@@ -59,21 +59,25 @@ const weatherHome = ({ datastate }) => {
             name="wind"
             description="today wind speed"
             value={`${state.windSpeed} km/h`}
+            image="wind.png"
           />
           <AdditionDetail
             name="pressure"
             description="today pressure"
             value={`${state.pressure} hpa`}
+            image="pressure.png"
           />
           <AdditionDetail
             name="Sunset"
             description="time of sunset"
             value={`${state.sunset}`}
+            image="sunset.png"
           />
           <AdditionDetail
             name="Sunrise"
             description="time of sunrise"
             value={`${state.sunrise}`}
+            image="sunset.png"
           />
         </div>
       </div>

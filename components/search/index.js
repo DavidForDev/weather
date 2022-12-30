@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { City } from "country-state-city";
+import gsap from "gsap";
 
 // ========== Icons ========== \\
 import SearchSvg from "../../public/icons/search";
@@ -10,17 +11,27 @@ import SearchSvg from "../../public/icons/search";
 const Search = () => {
   const [cityValue, setCityValue] = useState("");
   const countries = City.getAllCities();
+  const container = useRef(null);
 
   const city = countries.filter((e) =>
-    e.name.toLowerCase() === cityValue.toLocaleString() ? e : ""
+    e.name.toLowerCase() === cityValue.toLowerCase() ? e : ""
   );
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    tl.fromTo(container.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+
+    return () => tl.kill();
+  }, []);
+
   return (
-    <div className="flex gap-2 items-center relative w-full">
+    <div className="flex gap-2 items-center relative w-full" ref={container}>
       <SearchSvg width="22" height="22" />
       <input
         type="text"
         className="text-sm w-full"
-        placeholder="search something here"
+        placeholder="search city here..."
         value={cityValue}
         onChange={(e) => setCityValue(e.target.value)}
       />
@@ -28,6 +39,11 @@ const Search = () => {
         <div className="w-full flex flex-wrap gap-3 absolute top-8 left-0 right-0 bg-white p-2 z-20 shadow-md">
           <h3 className="text-xl font-semibold">Cities:</h3>
           <ul className="result_ul w-full flex flex-wrap gap-5">
+            {city.length === 0 ? (
+              <h3 className="text-zinc-800/40">write city name</h3>
+            ) : (
+              ""
+            )}
             {city.map((el, index) => {
               return (
                 <Link

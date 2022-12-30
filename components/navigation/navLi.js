@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const NavLi = ({ data }) => {
-  const { name, svg, href } = data;
+  const { name, image, href } = data;
 
   return (
     <Link
@@ -23,7 +24,13 @@ const NavLi = ({ data }) => {
     hover:before:right-0 
     hover:before:-mr-0.5 font-normal"
     >
-      {svg} {name}
+      <Image
+        src={`/images/navInterface/${image}`}
+        width={30}
+        height={30}
+        alt="naImage"
+      />{" "}
+      {name}
     </Link>
   );
 };

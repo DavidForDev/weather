@@ -2,7 +2,6 @@
 import AppLayout from "../layout/appLayout";
 
 // ========= Context ========== \\
-import { WeatherContextWrapper } from "../context/weather.context";
 import { FavoriteProvider } from "../context/addtoFavorite.context";
 
 import "../public/styles/global.css";

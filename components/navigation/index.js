@@ -7,8 +7,8 @@ import FavoriteSvg from "../../public/icons/favorite";
 
 const Navigation = () => {
   const navList = [
-    { name: "Dashboard", svg: <DashboarddSvg />, href: "/" },
-    { name: "Saved Location", svg: <FavoriteSvg />, href: "/saved" },
+    { name: "Dashboard", image: "dashboard.png", href: "/" },
+    { name: "Saved Location", image: "favorite.png", href: "/saved" },
   ];
 
   return (
