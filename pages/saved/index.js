@@ -13,7 +13,7 @@ const Saved = () => {
   return (
     <>
       <HeadLayout title="saved Location" />
-      <div className="w-full gap-7 p-10 h-full overflow-hidden flex flex-col">
+      <div className="csm:p-2 w-full gap-7 p-6 h-full overflow-hidden flex flex-col">
         <div className="clg:block w-8 hidden navOpener cursor-pointer">
           <div className="w-full h-0.5 bg-black m-2"></div>
           <div className="w-full h-0.5 bg-black m-2"></div>
