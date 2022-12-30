@@ -13,12 +13,23 @@ const Saved = () => {
   return (
     <>
       <HeadLayout title="saved Location" />
-      <div className="flex w-full gap-2 flex-wrap p-10 overflow-auto h-full">
-        {favorites.map((el, index) => {
-          return (
-            <SavedCard key={index} data={el} removeFavorite={removeFavorite} />
-          );
-        })}
+      <div className="w-full gap-2 p-10 h-full">
+        <div className="clg:block w-8 hidden navOpener cursor-pointer">
+          <div className="w-full h-0.5 bg-black m-2"></div>
+          <div className="w-full h-0.5 bg-black m-2"></div>
+          <div className="w-full h-0.5 bg-black m-2"></div>
+        </div>
+        <div className="overflow-auto h-full flex flex-wrap">
+          {favorites.map((el, index) => {
+            return (
+              <SavedCard
+                key={index}
+                data={el}
+                removeFavorite={removeFavorite}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );
