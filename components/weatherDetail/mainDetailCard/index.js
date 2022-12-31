@@ -79,7 +79,7 @@ const MainDetail = ({ data }) => {
     const month = CurrentTime.getMonth() + 1;
     const year = CurrentTime.getFullYear();
 
-    const dateForm = `${day}/${month}/${year}`;
+    const dateForm = `${month}/${day}/${year}`;
 
     return dateForm;
   };
