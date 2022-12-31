@@ -73,35 +73,16 @@ const MainDetail = ({ data }) => {
   });
 
   // ========== Timer with AM PM ========== \\
-  const timeform = () => {
-    var CurrentTime = new Date();
-    var hour = CurrentTime.getHours() - 12;
-    var minute = CurrentTime.getMinutes();
+  const dateform = () => {
+    const CurrentTime = new Date();
+    const day = CurrentTime.getDate();
+    const month = CurrentTime.getMonth() + 1;
+    const year = CurrentTime.getFullYear();
 
-    if (minute < 10) {
-      minute = "0" + minute;
-    }
+    const dateForm = `${day}/${month}/${year}`;
 
-    var GetCurrentTime = hour + ":" + minute;
-
-    if (hour > 11) {
-      GetCurrentTime += "PM";
-    } else {
-      GetCurrentTime += "AM";
-    }
-
-    return GetCurrentTime;
+    return dateForm;
   };
-
-  const [time, setTime] = useState(timeform());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(timeform), 60000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <div
@@ -122,7 +103,7 @@ const MainDetail = ({ data }) => {
           </div>
           <div className="flex gap-1">
             <p>Today</p>
-            {time}
+            {dateform()}
           </div>
         </div>
         <div className="flex flex-col gap-5 text-center">
