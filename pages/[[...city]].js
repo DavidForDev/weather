@@ -99,7 +99,7 @@ const weatherHome = ({ datastate, message }) => {
 
 export async function getServerSideProps(req, res) {
   const userLocation = await fetch(
-    "https://ipinfo.io/5.152.26.237?token=63902c1f6ae71e"
+    `https://ipinfo.io/${process.env.IPINFO_ADDRESS}?token=${process.env.IPINFO_TOKEN}`
   );
 
   const locationResponse = await userLocation.json();
