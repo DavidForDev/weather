@@ -8,11 +8,23 @@ import Search from "../components/search";
 import MainDetail from "../components/weatherDetail/mainDetailCard";
 import AdditionDetail from "../components/weatherDetail/additionDetailCard";
 
-const weatherHome = ({ datastate }) => {
+const weatherHome = ({ datastate, message }) => {
   // ==== Calculate sunrise && sunset
   const sun = (value, timezone) => {
     return utc(value, "X").add(timezone, "seconds").format("HH:mm a");
   };
+
+  // ======== if cities not fond in weather app we return small error
+  if (!datastate || message)
+    return (
+      <div className="clg:p-3 home p-10 flex flex-col gap-7 overflow-auto  h-full">
+        <Search />
+        <h3 className="w-full h-full text-2xl uppercase flex flex-col justify-center items-center">
+          {message}
+          <p className="text-sm">Try searching other cities</p>
+        </h3>
+      </div>
+    );
 
   // ==== weather Detail
   const weatherDetail = {
@@ -103,7 +115,10 @@ export async function getServerSideProps(req, res) {
       cache: "no-store",
     }
   );
+
   const datastate = await fetching.json();
+
+  if (datastate.cod === "404") return { props: { message: datastate.message } };
 
   return {
     props: {

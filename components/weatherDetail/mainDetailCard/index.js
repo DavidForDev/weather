@@ -86,7 +86,7 @@ const MainDetail = ({ data }) => {
 
   return (
     <div
-      className="csm:flex-col-reverse csm:p-2 flex gap-3 w-full p-6 rounded-xl bg-sky-100 shadow-lg "
+      className="csm:flex-col-reverse opacity-0 csm:p-2 flex gap-3 w-full p-6 rounded-xl bg-sky-100 shadow-lg "
       style={gradientByWeather}
       ref={container}
     >

@@ -2,19 +2,21 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { City } from "country-state-city";
 import gsap from "gsap";
+import { take } from "lodash";
 
 // ========== Icons ========== \\
 import SearchSvg from "../../public/icons/search";
-
-// ========== redux ========== \\
 
 const Search = () => {
   const [cityValue, setCityValue] = useState("");
   const countries = City.getAllCities();
   const container = useRef(null);
 
-  const city = countries.filter((e) =>
-    e.name.toLowerCase() === cityValue.toLowerCase() ? e : ""
+  const city = take(
+    countries.filter((e) =>
+      e.name.toLowerCase().includes(cityValue.toLowerCase()) ? e : ""
+    ),
+    20
   );
 
   useEffect(() => {
@@ -26,7 +28,10 @@ const Search = () => {
   }, []);
 
   return (
-    <div className="flex gap-2 items-center relative w-full" ref={container}>
+    <div
+      className="flex gap-2 items-center relative w-full opacity-0"
+      ref={container}
+    >
       <SearchSvg width="22" height="22" />
       <input
         type="text"

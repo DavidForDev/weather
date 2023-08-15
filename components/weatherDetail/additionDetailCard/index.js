@@ -19,7 +19,7 @@ const AdditionDetail = ({ name, description, value, image }) => {
 
   return (
     <div
-      className="flex items-center justify-between bg-slate-100 py-14 px-7 rounded-lg cursor-pointer w-full shadow-sm"
+      className="flex opacity-0 items-center justify-between bg-slate-100 py-14 px-7 rounded-lg cursor-pointer w-full shadow-sm"
       ref={container}
     >
       <div className="flex flex-col gap-4">

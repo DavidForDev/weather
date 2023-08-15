@@ -26,8 +26,8 @@ const NavLi = ({ data }) => {
     >
       <Image
         src={`/images/navInterface/${image}`}
-        width={30}
-        height={30}
+        width={25}
+        height={25}
         alt="naImage"
       />{" "}
       {name}
