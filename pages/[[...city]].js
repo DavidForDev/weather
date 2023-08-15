@@ -99,8 +99,9 @@ const weatherHome = ({ datastate, message }) => {
 
 export async function getServerSideProps(req, res) {
   const userLocation = await fetch(
-    "https://api.bigdatacloud.net/data/reverse-geocode-client"
+    "https://ipinfo.io/5.152.26.237?token=63902c1f6ae71e"
   );
+
   const locationResponse = await userLocation.json();
   const locationCity = await locationResponse.city;
   const locationCountryCode = await locationResponse.countryCode;
